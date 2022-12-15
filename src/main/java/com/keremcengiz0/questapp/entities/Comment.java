@@ -23,9 +23,9 @@ public class Comment {
     @JsonIgnore
     private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY) // DB'den Post objesini çektiğimde user'i getirme.
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "user_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)  //Bir user silindiğinde tüm postları da silinir.
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
 

@@ -5,11 +5,13 @@ import com.keremcengiz0.questapp.entities.User;
 import com.keremcengiz0.questapp.repository.abstracts.PostRepository;
 import com.keremcengiz0.questapp.requests.PostCreateRequest;
 import com.keremcengiz0.questapp.requests.PostUpdateRequest;
+import com.keremcengiz0.questapp.responses.PostResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -23,12 +25,15 @@ public class PostService {
         this.userService = userService;
     }
 
-    public List<Post> getAllPosts(Optional<Long> userId) {
+    public List<PostResponse> getAllPosts(Optional<Long> userId) {
+        List<Post> list;
+
         if(userId.isPresent()) {
-            return this.postRepository.findByUserId(userId.get());
+            list = this.postRepository.findByUserId(userId.get());
         } else {
-            return this.postRepository.findAll();
+            list = this.postRepository.findAll();
         }
+        return list.stream().map(post -> new PostResponse(post)).collect(Collectors.toList());
     }
 
     public Post getOnePostById(Long postId) {
