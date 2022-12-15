@@ -16,7 +16,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER) // DB'den Post objesini çektiğimde user'i getirme.
+    @ManyToOne(fetch = FetchType.EAGER) // LAZY = DB'den Post objesini çektiğimde user'i getirme.
     @JoinColumn(name= "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)  //Bir user silindiğinde tüm postları da silinir.
     private User user;
