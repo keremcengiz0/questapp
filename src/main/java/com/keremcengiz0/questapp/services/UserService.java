@@ -51,4 +51,8 @@ public class UserService {
             this.userRepository.deleteById(foundUserToDelete.getId());
         }
     }
+
+    public User getOneUserByUserName(String userName) {
+        return this.userRepository.findByUserName(userName);
+    }
 }

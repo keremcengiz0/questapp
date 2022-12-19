@@ -29,6 +29,7 @@ public class PostService {
         this.userService = userService;
     }
 
+    @Autowired
     public void setLikeService(LikeService likeService) {
         this.likeService = likeService;
     }
@@ -42,7 +43,7 @@ public class PostService {
             list = this.postRepository.findAll();
         }
         return list.stream().map(post -> {
-            List<LikeResponse> likes = likeService.getAllLikesWithParam(null, Optional.of(post.getId()));
+            List<LikeResponse> likes = likeService.getAllLikesWithParam(Optional.ofNullable(null), Optional.of(post.getId()));
             return new PostResponse(post, likes);}).collect(Collectors.toList());
     }
 
