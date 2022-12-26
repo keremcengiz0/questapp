@@ -1,11 +1,10 @@
 package com.keremcengiz0.questapp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Table(name = "post")
@@ -26,4 +25,7 @@ public class Post {
     @Lob
     @Column(columnDefinition = "text")
     private String text;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
 }

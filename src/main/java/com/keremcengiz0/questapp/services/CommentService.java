@@ -9,6 +9,7 @@ import com.keremcengiz0.questapp.requests.CommentUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +53,7 @@ public class CommentService {
             toSaveComment.setText(newCommentRequest.getText());
             toSaveComment.setUser(user);
             toSaveComment.setPost(post);
+            toSaveComment.setCreateDate(new Date());
             this.commentRepository.save(toSaveComment);
             return toSaveComment;
         } else {
