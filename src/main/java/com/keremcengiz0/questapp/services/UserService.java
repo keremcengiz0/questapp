@@ -1,7 +1,5 @@
 package com.keremcengiz0.questapp.services;
 
-import com.keremcengiz0.questapp.entities.Comment;
-import com.keremcengiz0.questapp.entities.Like;
 import com.keremcengiz0.questapp.entities.User;
 import com.keremcengiz0.questapp.repository.abstracts.CommentRepository;
 import com.keremcengiz0.questapp.repository.abstracts.LikeRepository;
@@ -46,10 +44,6 @@ public class UserService {
 
         if (user.isPresent()) {
             User foundUser = user.get();
-            if(newUser.getUserName() != null && newUser.getPassword() != null) {
-                foundUser.setUserName(newUser.getUserName());
-                foundUser.setPassword(newUser.getPassword());
-            }
             foundUser.setAvatar(newUser.getAvatar());
             this.userRepository.save(foundUser);
             return foundUser;
