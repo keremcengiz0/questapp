@@ -1,12 +1,14 @@
 package com.keremcengiz0.questapp.controllers;
 
 import com.keremcengiz0.questapp.entities.User;
+import com.keremcengiz0.questapp.exceptions.UserNotFoundException;
 import com.keremcengiz0.questapp.responses.UserResponse;
 import com.keremcengiz0.questapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -30,7 +32,11 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public UserResponse getOneUser(@PathVariable Long userId) {
-        return new UserResponse(this.userService.getOneUserById(userId));
+        User user = this.userService.getOneUserById(userId);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        return new UserResponse(user);
     }
 
     @PutMapping("/{userId}")
@@ -46,5 +52,11 @@ public class UserController {
     @GetMapping("/activity/{userId}")
     public List<Object> getUserActivity(@PathVariable Long userId) {
         return this.userService.getUserActivity(userId);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    private ResponseEntity<String> handleUserNotFound() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Böyle bir kullanıcı bulunamadı");
     }
 }
