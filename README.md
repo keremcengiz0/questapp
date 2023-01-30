@@ -37,6 +37,9 @@ You can visit this repository for the FrontEnd part. ==> [Quest-app-react](https
 ### Home Page 
 ![home_page](https://user-images.githubusercontent.com/112478277/215431427-d9afe3f7-43d2-4dbd-8450-5e7a24e6bbcd.png)
 
+### Comment 
+![comment](https://user-images.githubusercontent.com/112478277/215438059-c9a950b9-2cf7-483e-b553-86f183f93c7b.png)
+
 ### Profile Page 
 ![profile_page](https://user-images.githubusercontent.com/112478277/215431499-e8d08d9f-7a8f-4512-869d-d8b03c9c09b9.png)
 
