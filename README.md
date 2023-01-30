@@ -23,6 +23,13 @@ This repository is a social application where users can share posts after regist
 ## IDE
 - Intellij IDEA
 
+## Running questapp locally
+```
+	git clone https://github.com/keremcengiz0/questapp.git
+```
+
+You can then access questapp here: http://localhost:8092/swagger-ui/index.html
+
 You can visit this repository for the FrontEnd part. ==> [Quest-app-react](https://github.com/keremcengiz0/quest-app-react)
 
 ## Images From Project
