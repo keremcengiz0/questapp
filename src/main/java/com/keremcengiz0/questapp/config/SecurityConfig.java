@@ -80,6 +80,8 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers(HttpMethod.GET,"/users")
                 .permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/v3/api-docs/**").permitAll()
                 .antMatchers("/auth/**")
                 .permitAll()
                 .anyRequest().authenticated();
